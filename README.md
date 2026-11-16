@@ -6,8 +6,6 @@
 
 目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN) 和 [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)。
 
-所有插件版本号均与原版一致，汉化与兼容修复不额外增加版本号。同步索引时会核对原版清单，版本不一致时保留上一次可用索引。
-
 ## 安装方式
 
 在国服卫月设置的自定义插件仓库中添加并启用：
@@ -15,10 +13,6 @@
 ```text
 https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 ```
-
-保存后打开插件安装器，搜索需要的插件并自行选择安装。添加仓库仅提供插件列表，不会自动安装列表中的全部插件。插件是否可用，以安装器显示的版本和当前卫月兼容状态为准。
-
-如果已添加某个插件的独立仓库，可改用此总索引，避免重复添加同一来源。切换来源前，请禁用旧实例并备份相关配置，不要同时加载同一插件的多个实例。
 
 ## 反馈与贡献
 
