@@ -8,7 +8,7 @@
 
 - [Allagan Tools CN](https://github.com/pearl-eye/InventoryTools)
 - [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)
-- [Gather animation](https://github.com/pearl-eye/GatheringAnimation)
+- [Gathering Animation](https://github.com/pearl-eye/Gathering-Animation)
 - [自动金碟小游戏](https://github.com/pearl-eye/GoldSaucerGames)
 
 ## 安装方式
