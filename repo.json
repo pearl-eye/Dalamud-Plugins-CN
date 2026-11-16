@@ -11,7 +11,7 @@
       "汉化"
     ],
     "InternalName": "InventoryTools",
-    "AssemblyVersion": "15.0.13.2",
+    "AssemblyVersion": "1.15.1.1",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "LoadRequiredState": 0,
@@ -28,10 +28,10 @@
     "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/icon.png",
     "AcceptsFeedback": true,
     "RepoUrl": "https://github.com/pearl-eye/Allagan-Tools-CN",
-    "DownloadLinkInstall": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
-    "DownloadLinkTesting": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
-    "LastUpdate": 1794808072,
+    "DownloadLinkInstall": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
+    "LastUpdate": 1794813245,
     "DownloadCount": 5,
     "IsHide": false,
     "IsTestingExclusive": false
@@ -40,7 +40,7 @@
     "Author": "ChanceRain, NiGuangOwO, QianChangUwU；国服修复维护：pearl-eye",
     "Name": "Mortal MJ CN",
     "InternalName": "MortalMJPlugin",
-    "AssemblyVersion": "1.0.0.30",
+    "AssemblyVersion": "1.0.0.29",
     "Punchline": "Mortal AI 多玛方城战辅助，支持国服 Emj/EmjL 界面。",
     "Description": "Mortal MJ 国服修复版，保留本地 Emj/EmjL 适配、原生牌局读取和 Mortal AI 建议。AI 环境通过插件环境引导单独下载。原有联机与白名单功能保持原授权机制；插件进入角色后会向原服务发送角色名、原始服务器名与 ContentID。",
     "ApplicableVersion": "any",
@@ -56,12 +56,12 @@
     "LoadSync": false,
     "CanUnloadAsync": false,
     "LoadPriority": 0,
-    "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Mortal-MJ-CN/cn-v1.0.0.30/icon.png",
+    "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Mortal-MJ-CN/cn-v1.0.0.29/icon.png",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.30/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.30/latest.zip",
-    "DownloadLinkTesting": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.30/latest.zip",
-    "DownloadCount": 0,
-    "LastUpdate": 1794812568
+    "DownloadLinkInstall": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
+    "DownloadCount": 3,
+    "LastUpdate": 1794813373
   }
 ]
