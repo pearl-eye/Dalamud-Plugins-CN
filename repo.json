@@ -1,0 +1,39 @@
+[
+  {
+    "Author": "Critical_Impact；汉化维护：pearl-eye",
+    "Name": "Allagan Tools CN",
+    "Punchline": "跨角色与雇员查找物品、整理背包、规划制作，并查询物品来源与用途。",
+    "Description": "Allagan Tools 国服源码汉化版。\n\n支持角色、雇员和部队物品追踪，物品筛选与整理、制作清单、市场价格、背包高亮，以及物品、怪物、副本、飞空艇和潜水艇图鉴。\n\n本分支由 pearl-eye 维护中文界面，基于国服兼容源码构建。",
+    "Tags": [
+      "背包",
+      "整理",
+      "制作",
+      "汉化"
+    ],
+    "InternalName": "InventoryTools",
+    "AssemblyVersion": "15.0.13.2",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "LoadPriority": 0,
+    "CanUnloadAsync": false,
+    "ImageUrls": [
+      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/banner1.png",
+      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot1.png",
+      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot2.png",
+      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot3.png",
+      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot4.png"
+    ],
+    "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/icon.png",
+    "AcceptsFeedback": true,
+    "RepoUrl": "https://github.com/pearl-eye/Allagan-Tools-CN",
+    "DownloadLinkInstall": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v15.0.13.2/latest.zip",
+    "LastUpdate": 1794808072,
+    "DownloadCount": 0,
+    "IsHide": false,
+    "IsTestingExclusive": false
+  }
+]
