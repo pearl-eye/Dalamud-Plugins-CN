@@ -19,20 +19,20 @@
     "LoadPriority": 0,
     "CanUnloadAsync": false,
     "ImageUrls": [
-      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/banner1.png",
-      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot1.png",
-      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot2.png",
-      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot3.png",
-      "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot4.png"
+      "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/banner1.png",
+      "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot1.png",
+      "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot2.png",
+      "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot3.png",
+      "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot4.png"
     ],
-    "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/icon.png",
+    "IconUrl": "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/icon.png",
     "AcceptsFeedback": true,
-    "RepoUrl": "https://github.com/pearl-eye/Allagan-Tools-CN",
-    "DownloadLinkInstall": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
-    "DownloadLinkTesting": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/download/cn-v1.15.1.1/latest.zip",
+    "RepoUrl": "https://github.com/pearl-eye/InventoryTools",
+    "DownloadLinkInstall": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
     "LastUpdate": 1794813245,
-    "DownloadCount": 5,
+    "DownloadCount": 9,
     "IsHide": false,
     "IsTestingExclusive": false
   },
@@ -61,7 +61,7 @@
     "DownloadLinkInstall": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
     "DownloadLinkUpdate": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
     "DownloadLinkTesting": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/download/cn-v1.0.0.29/latest.zip",
-    "DownloadCount": 3,
+    "DownloadCount": 5,
     "LastUpdate": 1794813373
   }
 ]

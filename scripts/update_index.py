@@ -155,8 +155,12 @@ def download_overrides(source, entries):
     }
 
     def validate(rule):
-        if not isinstance(rule, dict) or set(rule) != {"repository", "assetPatterns"}:
-            raise ValueError("Each downloadStats rule needs repository and assetPatterns")
+        required = {"repository", "assetPatterns"}
+        if not isinstance(rule, dict) or not required <= set(rule) <= required | {"previousDownloads"}:
+            raise ValueError(
+                "Each downloadStats rule needs repository and assetPatterns, "
+                "and may only add previousDownloads"
+            )
         require_repository(rule["repository"])
         patterns = rule["assetPatterns"]
         if not isinstance(patterns, list) or not patterns or any(
@@ -164,6 +168,9 @@ def download_overrides(source, entries):
             for pattern in patterns
         ):
             raise ValueError("downloadStats.assetPatterns must be a nonempty array of asset filename patterns")
+        previous = rule.get("previousDownloads", 0)
+        if not isinstance(previous, int) or isinstance(previous, bool) or previous < 0:
+            raise ValueError("downloadStats.previousDownloads must be a nonnegative integer")
         return rule
 
     if "repository" in config or "assetPatterns" in config:
@@ -183,7 +190,9 @@ def download_overrides(source, entries):
 
 def plugin_download_count(item, override, fetch, cache):
     if override is not None:
-        return get_download_count(
+        # Keep frozen totals from a former repository, while still requiring
+        # a successful live count from the current repository.
+        return override.get("previousDownloads", 0) + get_download_count(
             override["repository"], override["assetPatterns"], fetch, cache
         )
     repositories = {}

@@ -119,7 +119,8 @@ class IndexTests(unittest.TestCase):
     def test_versioned_asset_overrides_are_per_plugin(self):
         registry = source("Collection")
         registry["downloadStats"] = {
-            "First": {"repository": "pearl-eye/Packages", "assetPatterns": ["First-v*.zip"]},
+            "First": {"repository": "pearl-eye/Packages", "assetPatterns": ["First-v*.zip"],
+                      "previousDownloads": 100},
             "Second": {"repository": "pearl-eye/Packages", "assetPatterns": ["Second-v*.zip"]},
         }
         feeds = {
@@ -129,13 +130,72 @@ class IndexTests(unittest.TestCase):
             ])],
         }
         result = collect_index([registry], feeds.__getitem__)
-        self.assertEqual([x["DownloadCount"] for x in result], [12, 30])
+        self.assertEqual([x["DownloadCount"] for x in result], [112, 30])
+
+    def test_single_plugin_frozen_downloads_are_added_to_current_repository(self):
+        registry = source("Migrated")
+        rule = {"repository": "pearl-eye/NewRepo", "assetPatterns": ["latest.zip"],
+                "previousDownloads": 73}
+        registry["downloadStats"] = rule
+        feeds = {
+            registry["manifestUrl"]: [plugin("First", "NewRepo")],
+            release_url("pearl-eye/NewRepo"): [
+                release([asset(count=4)]),
+                release([asset(count=9, identifier=2)], prerelease=True),
+            ],
+        }
+        item = collect_index([registry], feeds.__getitem__)[0]
+        self.assertEqual(item["DownloadCount"], 86)
+        self.assertNotIn("previousDownloads", item)
+        self.assertEqual(rule["previousDownloads"], 73)
+
+    def test_previous_downloads_defaults_to_zero_and_accepts_explicit_zero(self):
+        for extra in ({}, {"previousDownloads": 0}):
+            with self.subTest(extra=extra):
+                registry = source("First")
+                registry["downloadStats"] = {
+                    "repository": "pearl-eye/First", "assetPatterns": ["latest.zip"], **extra,
+                }
+                feeds = {
+                    registry["manifestUrl"]: [plugin("First", "First")],
+                    release_url("pearl-eye/First"): [release([asset(count=7)])],
+                }
+                self.assertEqual(collect_index([registry], feeds.__getitem__)[0]["DownloadCount"], 7)
+
+    def test_invalid_download_baselines_and_unknown_rule_fields_are_rejected(self):
+        valid = {"repository": "pearl-eye/First", "assetPatterns": ["latest.zip"]}
+        invalid_rules = [
+            {**valid, "previousDownloads": value}
+            for value in (-1, True, False, 1.5, "10", None, [], {})
+        ]
+        invalid_rules.extend((
+            {**valid, "previousDownloads": 7, "unknown": 1},
+            {"repository": "pearl-eye/First", "previousDownloads": 7},
+            {"assetPatterns": ["latest.zip"], "previousDownloads": 7},
+        ))
+        for rule in invalid_rules:
+            for keyed in (False, True):
+                with self.subTest(rule=rule, keyed=keyed):
+                    registry = source("First")
+                    registry["downloadStats"] = {"First": rule} if keyed else rule
+
+                    def fetch(url):
+                        self.assertEqual(url, registry["manifestUrl"], "Invalid rules must fail before API access")
+                        return [plugin("First", "First")]
+
+                    with self.assertRaises(ValueError):
+                        collect_index([registry], fetch)
 
     def test_no_matching_package_or_api_failure_preserves_index(self):
         for response in ([release([asset("repo.json", 50)])], OSError("GitHub API unavailable")):
             with self.subTest(response=response), tempfile.TemporaryDirectory() as folder:
                 registry, output = Path(folder) / "sources.json", Path(folder) / "repo.json"
-                registry.write_text(json.dumps([source("First")]))
+                configured_source = source("First")
+                configured_source["downloadStats"] = {
+                    "repository": "pearl-eye/First", "assetPatterns": ["latest.zip"],
+                    "previousDownloads": 88,
+                }
+                registry.write_text(json.dumps([configured_source]))
                 output.write_text('[{"DownloadCount":88}]\n')
                 original = output.read_bytes()
 

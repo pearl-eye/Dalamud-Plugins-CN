@@ -1,9 +1,16 @@
 [
   {
     "name": "Allagan Tools CN",
-    "repository": "pearl-eye/Allagan-Tools-CN",
+    "repository": "pearl-eye/InventoryTools",
     "upstreamManifestUrl": "https://raw.githubusercontent.com/Dalamud-DailyRoutines/PluginDistD17/main/stable/InventoryTools/InventoryTools.json",
-    "manifestUrl": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json"
+    "manifestUrl": "https://github.com/pearl-eye/InventoryTools/releases/latest/download/repo.json",
+    "downloadStats": {
+      "repository": "pearl-eye/InventoryTools",
+      "assetPatterns": [
+        "latest.zip"
+      ],
+      "previousDownloads": 9
+    }
   },
   {
     "name": "Mortal MJ CN",
