@@ -38,7 +38,7 @@
     "DownloadLinkInstall": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
     "DownloadLinkUpdate": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
     "DownloadLinkTesting": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
-    "DownloadCount": 3,
+    "DownloadCount": 7,
     "LastUpdate": 1794821468
   },
   {
@@ -70,10 +70,10 @@
     "IconUrl": "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/icon.png",
     "AcceptsFeedback": true,
     "RepoUrl": "https://github.com/pearl-eye/InventoryTools",
-    "DownloadLinkInstall": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
-    "DownloadLinkTesting": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1/latest.zip",
-    "LastUpdate": 1794813245,
+    "DownloadLinkInstall": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1-localization/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1-localization/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/InventoryTools/releases/download/cn-v1.15.1.1-localization/latest.zip",
+    "LastUpdate": 1794826099,
     "DownloadCount": 16,
     "IsHide": false,
     "IsTestingExclusive": false
