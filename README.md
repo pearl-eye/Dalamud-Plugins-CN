@@ -4,7 +4,7 @@
 
 由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月汉化插件。
 
-目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN)。
+目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN) 和 [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)。
 
 ## 安装方式
 

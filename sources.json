@@ -3,5 +3,10 @@
     "name": "Allagan Tools CN",
     "repository": "pearl-eye/Allagan-Tools-CN",
     "manifestUrl": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json"
+  },
+  {
+    "name": "Mortal MJ CN",
+    "repository": "pearl-eye/Mortal-MJ-CN",
+    "manifestUrl": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/latest/download/repo.json"
   }
 ]
