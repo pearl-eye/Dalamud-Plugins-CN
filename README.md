@@ -2,9 +2,14 @@
 
 ## 简介
 
-由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月汉化插件。
+由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月原创与汉化插件。
 
-目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN) 和 [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)。
+目前收录：
+
+- [Allagan Tools CN](https://github.com/pearl-eye/InventoryTools)
+- [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)
+- [Gather animation](https://github.com/pearl-eye/GatheringAnimation)
+- [自动金碟小游戏](https://github.com/pearl-eye/GoldSaucerGames)
 
 ## 安装方式
 

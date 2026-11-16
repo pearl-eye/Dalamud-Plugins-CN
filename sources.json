@@ -17,5 +17,15 @@
     "repository": "pearl-eye/Mortal-MJ-CN",
     "upstreamManifestUrl": "https://raw.githubusercontent.com/ChanceRain0108/DalamudPlugins/main/pluginmaster.json",
     "manifestUrl": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/latest/download/repo.json"
+  },
+  {
+    "name": "Gather animation",
+    "repository": "pearl-eye/GatheringAnimation",
+    "manifestUrl": "https://github.com/pearl-eye/GatheringAnimation/releases/latest/download/repo.json"
+  },
+  {
+    "name": "自动金碟小游戏",
+    "repository": "pearl-eye/GoldSaucerGames",
+    "manifestUrl": "https://github.com/pearl-eye/GoldSaucerGames/releases/latest/download/repo.json"
   }
 ]
