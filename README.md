@@ -2,9 +2,9 @@
 
 ## 简介
 
-由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月汉化插件总索引。各插件保留独立的源码仓库和发布页面，这里将它们汇总为一个可添加到卫月的插件列表。
+由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月汉化插件。
 
-目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN)。以后新增插件时，使用同一个仓库地址，无需逐个添加新地址。
+目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN)。
 
 ## 安装方式
 
@@ -25,11 +25,3 @@ https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 [sources.json](sources.json) 记录各插件的发布索引来源。提出收录或修正时，请提供插件名称、源码仓库、发布索引地址及许可证信息。
 
 维护时，在 `sources.json` 添加插件发布索引，运行 `python scripts/update_index.py`，再提交生成的 `repo.json`。总索引目前手动更新。
-
-## 许可证与归属
-
-总索引维护脚本采用 [GNU General Public License v3](LICENSE)。
-
-各插件的源码、安装包和资源仍遵循各自的许可证，原作者和贡献者的版权及声明保持不变。本仓库整理发布索引，不改变所收录插件的授权条款。
-
-Allagan Tools 原作者为 Critical_Impact；Allagan Tools CN 由 pearl-eye 维护汉化，沿用 [GNU General Public License v3](https://github.com/pearl-eye/Allagan-Tools-CN/blob/zh-CN/LICENSE)。汉化分支与总索引均不代表原作者官方发布。
