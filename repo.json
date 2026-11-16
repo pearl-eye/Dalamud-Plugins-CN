@@ -18,12 +18,12 @@
     "DownloadLinkInstall": "https://github.com/pearl-eye/Gathering-Animation/releases/download/v1.3.1.0-rename/latest.zip",
     "DownloadLinkUpdate": "https://github.com/pearl-eye/Gathering-Animation/releases/download/v1.3.1.0-rename/latest.zip",
     "DownloadLinkTesting": "https://github.com/pearl-eye/Gathering-Animation/releases/download/v1.3.1.0-rename/latest.zip",
-    "DownloadCount": 2,
+    "DownloadCount": 4,
     "LastUpdate": 1794819560
   },
   {
     "Author": "pearl-eye",
-    "Name": "自动金碟小游戏",
+    "Name": "Gold Saucer Games",
     "InternalName": "GoldSaucerGames",
     "AssemblyVersion": "1.0.1.0",
     "Description": "自动游玩孤树无援和矿脉探索。支持设置次数、连续挑战和停止操作。",
@@ -33,13 +33,13 @@
     "LoadRequiredState": 0,
     "LoadSync": false,
     "CanUnloadAsync": true,
-    "RepoUrl": "https://github.com/pearl-eye/GoldSaucerGames",
+    "RepoUrl": "https://github.com/pearl-eye/Gold-Saucer-Games",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://github.com/pearl-eye/GoldSaucerGames/releases/download/v1.0.1.0/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/pearl-eye/GoldSaucerGames/releases/download/v1.0.1.0/latest.zip",
-    "DownloadLinkTesting": "https://github.com/pearl-eye/GoldSaucerGames/releases/download/v1.0.1.0/latest.zip",
+    "DownloadLinkInstall": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
+    "DownloadLinkTesting": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/download/v1.0.1.0-rename/latest.zip",
     "DownloadCount": 3,
-    "LastUpdate": 1794818618
+    "LastUpdate": 1794821468
   },
   {
     "Author": "Critical_Impact；汉化维护：pearl-eye",

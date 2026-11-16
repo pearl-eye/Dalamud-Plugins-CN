@@ -24,8 +24,8 @@
     "manifestUrl": "https://github.com/pearl-eye/Gathering-Animation/releases/latest/download/repo.json"
   },
   {
-    "name": "自动金碟小游戏",
-    "repository": "pearl-eye/GoldSaucerGames",
-    "manifestUrl": "https://github.com/pearl-eye/GoldSaucerGames/releases/latest/download/repo.json"
+    "name": "Gold Saucer Games",
+    "repository": "pearl-eye/Gold-Saucer-Games",
+    "manifestUrl": "https://github.com/pearl-eye/Gold-Saucer-Games/releases/latest/download/repo.json"
   }
 ]
