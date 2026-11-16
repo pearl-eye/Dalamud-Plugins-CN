@@ -2,11 +2,13 @@
   {
     "name": "Allagan Tools CN",
     "repository": "pearl-eye/Allagan-Tools-CN",
+    "upstreamManifestUrl": "https://raw.githubusercontent.com/Dalamud-DailyRoutines/PluginDistD17/main/stable/InventoryTools/InventoryTools.json",
     "manifestUrl": "https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json"
   },
   {
     "name": "Mortal MJ CN",
     "repository": "pearl-eye/Mortal-MJ-CN",
+    "upstreamManifestUrl": "https://raw.githubusercontent.com/ChanceRain0108/DalamudPlugins/main/pluginmaster.json",
     "manifestUrl": "https://github.com/pearl-eye/Mortal-MJ-CN/releases/latest/download/repo.json"
   }
 ]

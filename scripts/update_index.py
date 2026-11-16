@@ -201,11 +201,42 @@ def plugin_download_count(item, override, fetch, cache):
     )
 
 
+def upstream_versions(source, fetch, cache):
+    """Read optional upstream versions without normalizing their version strings."""
+    if "upstreamManifestUrl" not in source:
+        return None
+    url = source["upstreamManifestUrl"]
+    require_https(url, "upstreamManifestUrl")
+    if url in cache:
+        return cache[url]
+    document = fetch(url)
+    if isinstance(document, dict):
+        entries = [document]
+    elif isinstance(document, list):
+        entries = document
+    else:
+        raise ValueError(f"{source['name']}: upstream manifest must be an object or JSON array")
+    versions = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError(f"{source['name']}: upstream plugin manifest must be an object")
+        internal = entry.get("InternalName")
+        if not isinstance(internal, str) or not internal.strip() or any(c in internal for c in "/\\\r\n"):
+            raise ValueError(f"{source['name']}: invalid upstream InternalName")
+        key = internal.casefold()
+        if key in versions:
+            raise ValueError(f"Duplicate upstream InternalName: {internal}")
+        versions[key] = entry.get("AssemblyVersion")
+    cache[url] = versions
+    return versions
+
+
 def collect_index(sources, fetch=download_json):
     if not isinstance(sources, list):
         raise ValueError("sources.json must contain an array")
     collected = {}
     release_cache = {}
+    upstream_cache = {}
     for source in sources:
         if not isinstance(source, dict) or not source.get("name") or not source.get("repository"):
             raise ValueError("Each source needs name, repository, and manifestUrl")
@@ -214,6 +245,7 @@ def collect_index(sources, fetch=download_json):
         entries = fetch(url)
         if not isinstance(entries, list):
             raise ValueError(f"{source['name']}: manifest must be a JSON array")
+        versions = upstream_versions(source, fetch, upstream_cache)
         overrides = download_overrides(source, entries)
         for entry in entries:
             if not isinstance(entry, dict):
@@ -227,6 +259,18 @@ def collect_index(sources, fetch=download_json):
             version = item.get("AssemblyVersion")
             if not isinstance(version, str) or not re.fullmatch(r"\d+(?:\.\d+){1,3}", version):
                 raise ValueError(f"{internal}: invalid stable AssemblyVersion")
+            if versions is not None:
+                key = internal.casefold()
+                if key not in versions:
+                    raise ValueError(f"{internal}: plugin is missing from the upstream manifest")
+                upstream_version = versions[key]
+                if not isinstance(upstream_version, str) or not re.fullmatch(r"\d+(?:\.\d+){1,3}", upstream_version):
+                    raise ValueError(f"{internal}: invalid upstream AssemblyVersion")
+                if version != upstream_version:
+                    raise ValueError(
+                        f"{internal}: AssemblyVersion {version} differs from upstream {upstream_version}; "
+                        "versions must match exactly"
+                    )
             api = item.get("DalamudApiLevel")
             if not isinstance(api, int) or isinstance(api, bool) or api < 1:
                 raise ValueError(f"{internal}: invalid DalamudApiLevel")

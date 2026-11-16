@@ -6,6 +6,8 @@
 
 目前收录 [Allagan Tools CN](https://github.com/pearl-eye/Allagan-Tools-CN) 和 [Mortal MJ CN](https://github.com/pearl-eye/Mortal-MJ-CN)。
 
+所有插件版本号均与原版一致，汉化与兼容修复不额外增加版本号。同步索引时会核对原版清单，版本不一致时保留上一次可用索引。
+
 ## 安装方式
 
 在国服卫月设置的自定义插件仓库中添加并启用：

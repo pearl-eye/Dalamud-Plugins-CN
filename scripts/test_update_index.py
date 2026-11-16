@@ -174,5 +174,136 @@ class IndexTests(unittest.TestCase):
         self.assertIsNone(redirected.get_header("Authorization"))
 
 
+class UpstreamVersionTests(unittest.TestCase):
+    upstream_url = "https://example.com/upstream.json"
+
+    def registry(self, name="First"):
+        return {**source(name), "upstreamManifestUrl": self.upstream_url}
+
+    def assert_rejected_without_replacing_index(self, upstream, manifest=None, error=ValueError, message=None):
+        registry = self.registry()
+        manifest = plugin("First", "First") if manifest is None else manifest
+        with tempfile.TemporaryDirectory() as folder:
+            sources_path, output = Path(folder) / "sources.json", Path(folder) / "repo.json"
+            sources_path.write_text(json.dumps([registry]))
+            original = b'[{"InternalName":"First","AssemblyVersion":"old","DownloadCount":88}]\n'
+            output.write_bytes(original)
+
+            def fetch(url):
+                if url == registry["manifestUrl"]:
+                    return [manifest]
+                if url == self.upstream_url:
+                    if isinstance(upstream, Exception):
+                        raise upstream
+                    return upstream
+                self.fail(f"Version validation must fail before requesting download statistics: {url}")
+
+            with self.assertRaisesRegex(error, message or ".*"):
+                update(sources_path, output, fetch)
+            self.assertEqual(output.read_bytes(), original)
+
+    def test_matching_object_manifest_keeps_exact_version_and_fork_download_link(self):
+        registry = self.registry()
+        manifest = plugin("First", "First")
+        original = dict(manifest)
+        feeds = {
+            registry["manifestUrl"]: [manifest],
+            self.upstream_url: {"InternalName": "First", "AssemblyVersion": "1.2.3"},
+            release_url("pearl-eye/First"): [release([asset(count=7)])],
+        }
+        item = collect_index([registry], feeds.__getitem__)[0]
+        self.assertEqual(item["AssemblyVersion"], "1.2.3")
+        self.assertEqual(item["DownloadLinkInstall"], manifest["DownloadLinkInstall"])
+        self.assertEqual(item["DownloadCount"], 7)
+        self.assertNotIn("upstreamManifestUrl", item)
+        self.assertEqual(manifest, original)
+
+    def test_shared_upstream_array_matches_internal_names_and_is_fetched_once(self):
+        registries = [self.registry("First"), self.registry("Second")]
+        first, second = plugin("First", "First"), plugin("Second", "Second")
+        second["AssemblyVersion"] = "2.0.0.29"
+        feeds = {
+            registries[0]["manifestUrl"]: [first],
+            registries[1]["manifestUrl"]: [second],
+            self.upstream_url: [
+                {"InternalName": "Other", "AssemblyVersion": "99.0-preview"},
+                {"InternalName": "Second", "AssemblyVersion": "2.0.0.29"},
+                {"InternalName": "First", "AssemblyVersion": "1.2.3"},
+            ],
+            release_url("pearl-eye/First"): [release([asset(count=1)])],
+            release_url("pearl-eye/Second"): [release([asset(count=2)])],
+        }
+        calls = []
+
+        def fetch(url):
+            calls.append(url)
+            return feeds[url]
+
+        items = collect_index(registries, fetch)
+        self.assertEqual([item["AssemblyVersion"] for item in items], ["1.2.3", "2.0.0.29"])
+        self.assertEqual(calls.count(self.upstream_url), 1)
+
+    def test_any_different_version_preserves_index_without_normalizing(self):
+        upstream = {"InternalName": "First", "AssemblyVersion": "1.2.3"}
+        for version in ("1.2.2", "1.2.3.1", "1.2.3.0"):
+            with self.subTest(version=version):
+                manifest = plugin("First", "First")
+                manifest["AssemblyVersion"] = version
+                self.assert_rejected_without_replacing_index(
+                    upstream, manifest, message="versions must match exactly"
+                )
+
+    def test_missing_plugin_in_upstream_preserves_index(self):
+        self.assert_rejected_without_replacing_index(
+            {"InternalName": "Other", "AssemblyVersion": "1.2.3"},
+            message="missing from the upstream manifest",
+        )
+
+    def test_duplicate_upstream_internal_names_preserve_index(self):
+        first = {"InternalName": "First", "AssemblyVersion": "1.2.3"}
+        for duplicate_name in ("First", "FIRST"):
+            with self.subTest(duplicate=duplicate_name):
+                self.assert_rejected_without_replacing_index(
+                    [first, {**first, "InternalName": duplicate_name}],
+                    message="Duplicate upstream InternalName",
+                )
+
+    def test_invalid_upstream_documents_preserve_index(self):
+        invalid_documents = (
+            None,
+            "not a manifest",
+            ["not a plugin"],
+            {},
+            {"InternalName": "Bad/Name", "AssemblyVersion": "1.2.3"},
+            {"InternalName": "First"},
+            {"InternalName": "First", "AssemblyVersion": 29},
+            {"InternalName": "First", "AssemblyVersion": "1.2.3-cn"},
+        )
+        for document in invalid_documents:
+            with self.subTest(document=document):
+                self.assert_rejected_without_replacing_index(document)
+
+    def test_upstream_download_failure_preserves_index(self):
+        self.assert_rejected_without_replacing_index(
+            OSError("upstream unavailable"), error=OSError, message="upstream unavailable"
+        )
+
+    def test_configured_upstream_url_requires_https_without_credentials(self):
+        for url in ("http://example.com/upstream.json", "https://name:password@example.com/upstream.json", None):
+            with self.subTest(url=url):
+                registry = self.registry()
+                registry["upstreamManifestUrl"] = url
+                calls = []
+
+                def fetch(request_url):
+                    calls.append(request_url)
+                    self.assertEqual(request_url, registry["manifestUrl"])
+                    return [plugin("First", "First")]
+
+                with self.assertRaisesRegex(ValueError, "upstreamManifestUrl must be an HTTPS URL"):
+                    collect_index([registry], fetch)
+                self.assertEqual(calls, [registry["manifestUrl"]])
+
+
 if __name__ == "__main__":
     unittest.main()
