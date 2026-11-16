@@ -2,7 +2,7 @@
 
 ## 简介
 
-由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月原创与汉化插件。
+由 [pearl-eye](https://github.com/pearl-eye) 维护的国服卫月插件。
 
 目前收录：
 
